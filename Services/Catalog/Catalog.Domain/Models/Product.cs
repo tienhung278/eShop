@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Domain.Models;
 
-public class Product : Entity<Guid>
+public class Product : Entity
 {
     public string Name { get; set; } = default!;
     public string Category { get; set; } = default!;

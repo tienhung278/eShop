@@ -1,8 +1,8 @@
 ﻿namespace Catalog.Domain.Models;
 
-public abstract class Entity<T>
+public abstract class Entity
 {
-    public T Id { get; set; }
+    public Guid Id { get; set; }
     public DateTime? CreatedAt { get; set; }
     public Guid CreatedBy { get; set; }
     public DateTime? LastModified { get; set; }
