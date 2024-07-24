@@ -7,7 +7,8 @@ namespace BuildingBlocks;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddBuildingBlocksServices(this IServiceCollection services, IConfiguration configuration, Assembly assembly)
+    public static IServiceCollection AddBuildingBlocksServices(this IServiceCollection services,
+        IConfiguration configuration, Assembly assembly)
     {
         services.AddMediatR(config =>
         {

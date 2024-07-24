@@ -1,7 +1,5 @@
 ﻿using Carter;
-using Catalog.Application.Dtos;
 using Catalog.Application.Features.Product.GetProduct;
-using Catalog.Application.Features.Product.GetProducts;
 using Mapster;
 using MediatR;
 
@@ -16,7 +14,7 @@ public class GetProduct : ICarterModule
         app.MapGet("/api/products/{pId}", async (Guid pId, ISender sender) =>
             {
                 var query = new GetProductQuery(pId);
-                
+
                 var result = await sender.Send(query);
 
                 var response = result.Adapt<GetProductResponse>();
@@ -24,7 +22,7 @@ public class GetProduct : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetProduct")
-            .Produces<GetProductsResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductsResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Product")
             .WithDescription("Get Product");

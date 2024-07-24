@@ -1,6 +1,5 @@
 ﻿using BuildingBlocks.Exceptions.Handler;
 using Carter;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Catalog.Api;
 

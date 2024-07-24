@@ -2,7 +2,6 @@
 using Catalog.EntityFrameworkCore.Data;
 using Catalog.EntityFrameworkCore.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,10 +14,7 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("Database");
 
-        services.AddDbContext<ApplicationDbContext>((sp, options) =>
-        {
-            options.UseSqlServer(connectionString);
-        });
+        services.AddDbContext<ApplicationDbContext>((sp, options) => { options.UseSqlServer(connectionString); });
 
         services.AddScoped<ApplicationDbContext>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

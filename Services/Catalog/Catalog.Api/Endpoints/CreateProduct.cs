@@ -1,5 +1,4 @@
 ﻿using Carter;
-using Catalog.Application.Dtos;
 using Catalog.Application.Features.Product.CreateProduct;
 using Mapster;
 using MediatR;
@@ -21,7 +20,7 @@ public class CreateProduct : ICarterModule
                 var result = await sender.Send(command);
 
                 var response = result.Adapt<CreateProductResponse>();
- 
+
                 return Results.Created($"/api/products/{response.Id}", response);
             })
             .WithName("CreateProduct")

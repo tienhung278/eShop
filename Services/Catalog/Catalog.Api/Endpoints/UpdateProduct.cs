@@ -17,7 +17,7 @@ public class UpdateProduct : ICarterModule
                 var command = request.Adapt<UpdateProductCommand>();
 
                 await sender.Send(command);
- 
+
                 return Results.NoContent();
             })
             .WithName("UpdateProduct")

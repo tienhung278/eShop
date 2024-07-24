@@ -7,8 +7,8 @@ namespace Catalog.EntityFrameworkCore.Data.Repositories;
 
 public class Repository<T>(ApplicationDbContext context) : IRepository<T> where T : Entity
 {
-    private DbSet<T> _dbSet = context.Set<T>();
-    
+    private readonly DbSet<T> _dbSet = context.Set<T>();
+
     public async Task<IEnumerable<T>> GetAllAsync(PaginationRequest paginationRequest)
     {
         return await _dbSet

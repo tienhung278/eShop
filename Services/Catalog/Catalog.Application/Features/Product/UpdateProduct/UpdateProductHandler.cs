@@ -19,7 +19,7 @@ public class UpdateProductHandler(IUnitOfWork unitOfWork)
 
         await repository.UpdateAsync(product, Guid.NewGuid());
         await unitOfWork.SaveChangesAsync();
-        
+
         return await Task.FromResult(Unit.Value);
     }
 

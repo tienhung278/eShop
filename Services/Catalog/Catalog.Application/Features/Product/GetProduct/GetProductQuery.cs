@@ -1,5 +1,4 @@
 ﻿using BuildingBlocks.CQRS;
-using Catalog.Application.Dtos;
 
 namespace Catalog.Application.Features.Product.GetProduct;
 

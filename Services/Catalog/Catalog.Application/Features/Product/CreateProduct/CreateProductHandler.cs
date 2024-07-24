@@ -13,7 +13,7 @@ public class CreateProductHandler(IUnitOfWork unitOfWork) : ICommandHandler<Crea
         var product = request.Product.Adapt<Domain.Models.Product>();
         var pId = await repository.CreateAsync(product, Guid.NewGuid());
         await unitOfWork.SaveChangesAsync();
-        
+
         return new CreateProductResult(pId);
     }
 }

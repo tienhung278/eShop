@@ -8,7 +8,8 @@ namespace Catalog.Application.Features.Product.GetProductByCategory;
 public class GetProductByCategoryHandler(IProductRepository repository)
     : IQueryHandler<GetProductByCategoryQuery, GetProductByCategoryResult>
 {
-    public async Task<GetProductByCategoryResult> Handle(GetProductByCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<GetProductByCategoryResult> Handle(GetProductByCategoryQuery request,
+        CancellationToken cancellationToken)
     {
         var products = await repository.GetByCriteriaAsync(p =>
             p.Category.Equals(request.Category, StringComparison.InvariantCultureIgnoreCase));

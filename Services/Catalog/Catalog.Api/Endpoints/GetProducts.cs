@@ -16,7 +16,7 @@ public class GetProducts : ICarterModule
         app.MapGet("/api/products", async ([AsParameters] PaginationRequest request, ISender sender) =>
             {
                 var query = new GetProductsQuery(request);
-                
+
                 var result = await sender.Send(query);
 
                 var response = result.Adapt<GetProductsResponse>();
@@ -24,7 +24,7 @@ public class GetProducts : ICarterModule
                 return Results.Ok(response);
             })
             .WithName("GetProducts")
-            .Produces<GetProductsResponse>(StatusCodes.Status200OK)
+            .Produces<GetProductsResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Products")
             .WithDescription("Get Products");

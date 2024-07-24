@@ -11,14 +11,11 @@ public class DeleteProductHandler(IUnitOfWork unitOfWork) : ICommandHandler<Dele
     {
         var repository = unitOfWork.GetRepository<Domain.Models.Product>();
         var product = await repository.GetByIdAsync(request.Id);
-        if (product == null)
-        {
-            throw new ProductNotFoundException(request.Id);
-        }
+        if (product == null) throw new ProductNotFoundException(request.Id);
 
         await repository.DeleteAsync(product, Guid.NewGuid());
         await unitOfWork.SaveChangesAsync();
-        
+
         return await Task.FromResult(Unit.Value);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using BuildingBlocks;
-using Catalog.Api;
+﻿using Catalog.Api;
 using Catalog.Application;
 using Catalog.EntityFrameworkCore;
 

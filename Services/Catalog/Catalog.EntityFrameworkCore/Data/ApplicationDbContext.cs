@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Catalog.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Catalog.EntityFrameworkCore.Data;
 
