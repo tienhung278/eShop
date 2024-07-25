@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Catalog.Api.Endpoints;
 
-public record CreateProductRequest(ProductDto Product);
+public record CreateProductRequest(ProductDto Product, Guid ActedBy);
 
 public record CreateProductResponse(Guid Id);
 
@@ -16,10 +16,9 @@ public class CreateProduct : ICarterModule
     {
         app.MapPost("/api/products", async (CreateProductRequest request, ISender sender) =>
             {
+                request = request with { ActedBy = Guid.NewGuid() };
                 var command = request.Adapt<CreateProductCommand>();
-
                 var result = await sender.Send(command);
-
                 var response = result.Adapt<CreateProductResponse>();
 
                 return Results.Created($"/api/products/{response.Id}", response);

@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Catalog.Application.Features.Product.DeleteProduct;
 
-public record DeleteProductCommand(Guid Id) : ICommand;
+public record DeleteProductCommand(Guid Id, Guid ActedBy) : ICommand;
 
 public class DeleteProductValidator : AbstractValidator<DeleteProductCommand>
 {

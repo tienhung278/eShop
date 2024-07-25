@@ -2,10 +2,11 @@
 using Catalog.Application.Data;
 using Catalog.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.FeatureManagement;
 
 namespace Catalog.EntityFrameworkCore.Data.Repositories;
 
-public class Repository<T>(ApplicationDbContext context) : IRepository<T> where T : Entity
+public class Repository<T>(ApplicationDbContext context, IFeatureManager featureManager) : IRepository<T> where T : Entity
 {
     private readonly DbSet<T> _dbSet = context.Set<T>();
 
@@ -30,27 +31,35 @@ public class Repository<T>(ApplicationDbContext context) : IRepository<T> where 
 
     public async Task<Guid> CreateAsync(T item, Guid actedBy)
     {
-        item.CreatedAt = DateTime.UtcNow;
         item.CreatedBy = actedBy;
+        item.CreatedAt = DateTime.Now;
         item.IsActive = true;
         await _dbSet.AddAsync(item);
+        
         return item.Id;
     }
 
     public async Task UpdateAsync(T item, Guid actedBy)
     {
-        item.LastModified = DateTime.UtcNow;
         item.LastModifiedBy = actedBy;
+        item.LastModified = DateTime.Now;
         _dbSet.Update(item);
         await Task.CompletedTask;
     }
 
     public async Task DeleteAsync(T item, Guid actedBy)
     {
-        item.IsActive = false;
-        item.LastModified = DateTime.UtcNow;
-        item.LastModifiedBy = actedBy;
-        _dbSet.Update(item);
+        if (await featureManager.IsEnabledAsync("SoftDelete"))
+        {
+            item.LastModifiedBy = actedBy;
+            item.LastModified = DateTime.Now;
+            item.IsActive = false;
+            _dbSet.Update(item);
+        }
+        else
+        {
+            _dbSet.Remove(item);
+        }
         await Task.CompletedTask;
     }
 }

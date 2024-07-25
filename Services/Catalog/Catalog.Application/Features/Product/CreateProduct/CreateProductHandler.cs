@@ -11,7 +11,7 @@ public class CreateProductHandler(IUnitOfWork unitOfWork) : ICommandHandler<Crea
     {
         var repository = unitOfWork.GetRepository<Domain.Models.Product>();
         var product = request.Product.Adapt<Domain.Models.Product>();
-        var pId = await repository.CreateAsync(product, Guid.NewGuid());
+        var pId = await repository.CreateAsync(product, request.ActedBy);
         await unitOfWork.SaveChangesAsync();
 
         return new CreateProductResult(pId);

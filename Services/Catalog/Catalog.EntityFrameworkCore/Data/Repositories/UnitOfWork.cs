@@ -1,9 +1,10 @@
 ﻿using Catalog.Application.Data;
 using Catalog.Domain.Models;
+using Microsoft.FeatureManagement;
 
 namespace Catalog.EntityFrameworkCore.Data.Repositories;
 
-public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
+public class UnitOfWork(ApplicationDbContext context, IFeatureManager featureManager) : IUnitOfWork
 {
     private readonly Dictionary<Type, object?> _repositories = new();
 
@@ -11,7 +12,7 @@ public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
     {
         if (!_repositories.TryGetValue(typeof(T), out var repository))
         {
-            repository = new Repository<T>(context);
+            repository = new Repository<T>(context, featureManager);
             _repositories.Add(typeof(T), repository);
         }
 

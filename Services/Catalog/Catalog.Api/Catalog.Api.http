@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{Catalog.Api_HostAddress}}/api/products/5d87f504-583f-402e-7cd1-08dcac4ff7e6
+DELETE {{Catalog.Api_HostAddress}}/api/products/5005EF70-79CC-4E27-721F-08DCABECD23F
 
 ###
 GET {{Catalog.Api_HostAddress}}/api/products?pageNum=0&pageSize=20

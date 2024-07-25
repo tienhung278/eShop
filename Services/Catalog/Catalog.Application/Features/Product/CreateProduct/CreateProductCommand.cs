@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Catalog.Application.Features.Product.CreateProduct;
 
-public record CreateProductCommand(ProductDto Product)
+public record CreateProductCommand(ProductDto Product, Guid ActedBy)
     : ICommand<CreateProductResult>;
 
 public record CreateProductResult(Guid Id);

@@ -17,7 +17,7 @@ public class UpdateProductHandler(IUnitOfWork unitOfWork)
 
         UpdateProductWithNewValue(product, request.Product);
 
-        await repository.UpdateAsync(product, Guid.NewGuid());
+        await repository.UpdateAsync(product, request.ActedBy);
         await unitOfWork.SaveChangesAsync();
 
         return await Task.FromResult(Unit.Value);

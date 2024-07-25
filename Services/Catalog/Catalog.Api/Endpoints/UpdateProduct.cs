@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Catalog.Api.Endpoints;
 
-public record UpdateProductRequest(ProductDto Product);
+public record UpdateProductRequest(ProductDto Product, Guid ActedBy);
 
 public class UpdateProduct : ICarterModule
 {
@@ -14,8 +14,8 @@ public class UpdateProduct : ICarterModule
     {
         app.MapPut("/api/products", async (UpdateProductRequest request, ISender sender) =>
             {
+                request = request with { ActedBy = Guid.NewGuid() };
                 var command = request.Adapt<UpdateProductCommand>();
-
                 await sender.Send(command);
 
                 return Results.NoContent();
