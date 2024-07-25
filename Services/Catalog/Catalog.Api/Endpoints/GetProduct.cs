@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Catalog.Application.Dtos;
 using Catalog.Application.Features.Product.GetProduct;
 using Mapster;
 using MediatR;

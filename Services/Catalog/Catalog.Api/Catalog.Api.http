@@ -5,37 +5,37 @@ Content-Type: application/json
 
 {
   "product": {
-    "name": "name 1",
-    "category": "category 1",
-    "description": "description 1",
-    "imageFile": "image file 1",
-    "price": 100
+    "name": "name",
+    "category": "category",
+    "description": "description",
+    "imageFile": "image file",
+    "price": 50
   }
 }
 
 ###
-PUT {{Catalog.Api_HostAddress}}/api/products/D4CC6605-B105-4C7E-7431-08DCABC4A6F6
+PUT {{Catalog.Api_HostAddress}}/api/products
 Content-Type: application/json
 
 {
   "product": {
-    "id": "",
-    "name": "name 1",
-    "category": "category 1",
-    "description": "description 1",
-    "imageFile": "image file 1",
-    "price": 100
+    "id": "5d87f504-583f-402e-7cd1-08dcac4ff7e6",
+    "name": "name",
+    "category": "category",
+    "description": "description",
+    "imageFile": "image file",
+    "price": 80
   }
 }
 
 ###
-DELETE {{Catalog.Api_HostAddress}}/api/products/A61C5EB4-5B80-46EF-C78F-08DCAC47D91D
+DELETE {{Catalog.Api_HostAddress}}/api/products/5d87f504-583f-402e-7cd1-08dcac4ff7e6
 
 ###
 GET {{Catalog.Api_HostAddress}}/api/products?pageNum=0&pageSize=20
 Accept: application/json
 
 ###
-GET {{Catalog.Api_HostAddress}}/api/products/5f465145-c9da-4012-721e-08dcabecd23f
+GET {{Catalog.Api_HostAddress}}/api/products/5d87f504-583f-402e-7cd1-08dcac4ff7e6
 Accept: application/json
 

@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.CQRS;
+using Catalog.Application.Dtos;
 using FluentValidation;
 
 namespace Catalog.Application.Features.Product.CreateProduct;
