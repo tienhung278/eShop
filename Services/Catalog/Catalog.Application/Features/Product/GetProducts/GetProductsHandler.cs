@@ -10,7 +10,7 @@ public class GetProductsHandler(IProductRepository repository) : IQueryHandler<G
     public async Task<GetProductsResult> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {
         var products = await repository.GetAllAsync(request.PaginationRequest);
-        var productDtos = products.Adapt<IEnumerable<ProductDto>>();
+        var productDtos = products.Adapt<IEnumerable<ProductDto>>(ProductMapping.ToListDto());
 
         return new GetProductsResult(productDtos);
     }

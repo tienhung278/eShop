@@ -10,7 +10,7 @@ public class DeleteProductHandler(IUnitOfWork unitOfWork) : ICommandHandler<Dele
     public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<Domain.Models.Product>();
-        var product = await repository.GetByIdAsync(request.Id);
+        var product = (await repository.GetByCriteriaAsync(p => p.Id == request.Id)).SingleOrDefault();
         if (product == null) throw new ProductNotFoundException(request.Id);
 
         await repository.DeleteAsync(product, request.ActedBy);

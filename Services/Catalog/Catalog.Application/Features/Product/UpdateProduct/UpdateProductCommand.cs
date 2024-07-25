@@ -1,6 +1,7 @@
 ﻿using BuildingBlocks.CQRS;
 using Catalog.Application.Dtos;
 using FluentValidation;
+using Mapster;
 
 namespace Catalog.Application.Features.Product.UpdateProduct;
 

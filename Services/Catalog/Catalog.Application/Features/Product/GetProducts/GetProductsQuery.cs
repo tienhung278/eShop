@@ -1,6 +1,8 @@
 ﻿using BuildingBlocks.CQRS;
 using BuildingBlocks.Pagination;
 using Catalog.Application.Dtos;
+using Catalog.Application.Features.Product.GetProduct;
+using Mapster;
 
 namespace Catalog.Application.Features.Product.GetProducts;
 

@@ -10,10 +10,9 @@ public class GetProductHandler(IProductRepository repository) : IQueryHandler<Ge
 {
     public async Task<GetProductResult> Handle(GetProductQuery request, CancellationToken cancellationToken)
     {
-        var product = await repository.GetByIdAsync(request.Id);
-        if (product == null) throw new ProductNotFoundException(request.Id);
-
-        var productDto = product.Adapt<ProductDto>();
+        var product = (await repository.GetByCriteriaAsync(p => p.Id == request.Id)).SingleOrDefault();
+        var productDto = product.Adapt<ProductDto>(ProductMapping.ToDto());
+        
         return new GetProductResult(productDto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.CQRS;
 using Catalog.Application.Dtos;
+using Mapster;
 
 namespace Catalog.Application.Features.Product.GetProduct;
 

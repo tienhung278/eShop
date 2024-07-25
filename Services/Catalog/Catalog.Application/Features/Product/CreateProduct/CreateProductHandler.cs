@@ -10,7 +10,7 @@ public class CreateProductHandler(IUnitOfWork unitOfWork) : ICommandHandler<Crea
     public async Task<CreateProductResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<Domain.Models.Product>();
-        var product = request.Product.Adapt<Domain.Models.Product>();
+        var product = request.Product.Adapt<Domain.Models.Product>(ProductMapping.ToEntity());
         var pId = await repository.CreateAsync(product, request.ActedBy);
         await unitOfWork.SaveChangesAsync();
 

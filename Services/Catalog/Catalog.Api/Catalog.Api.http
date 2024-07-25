@@ -6,7 +6,7 @@ Content-Type: application/json
 {
   "product": {
     "name": "name",
-    "category": "category",
+    "category": ["category 1", "category 2"],
     "description": "description",
     "imageFile": "image file",
     "price": 50
@@ -19,9 +19,9 @@ Content-Type: application/json
 
 {
   "product": {
-    "id": "5d87f504-583f-402e-7cd1-08dcac4ff7e6",
+    "id": "45859469-6713-4bd4-1c95-08dcacfa056e",
     "name": "name",
-    "category": "category",
+    "category": ["category 1", "category 2"],
     "description": "description",
     "imageFile": "image file",
     "price": 80
@@ -29,13 +29,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{Catalog.Api_HostAddress}}/api/products/5005EF70-79CC-4E27-721F-08DCABECD23F
+DELETE {{Catalog.Api_HostAddress}}/api/products/45859469-6713-4bd4-1c95-08dcacfa056e
 
 ###
 GET {{Catalog.Api_HostAddress}}/api/products?pageNum=0&pageSize=20
 Accept: application/json
 
 ###
-GET {{Catalog.Api_HostAddress}}/api/products/5d87f504-583f-402e-7cd1-08dcac4ff7e6
+GET {{Catalog.Api_HostAddress}}/api/products/45859469-6713-4bd4-1c95-08dcacfa056e
 Accept: application/json
 
